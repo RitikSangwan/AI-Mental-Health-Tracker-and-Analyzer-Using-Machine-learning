@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Mental Health Predictor</title>
+
+    <!-- 
+    <link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      CSS 
+    <link href="C:\Users\HP\OneDrive\Desktop\project-mentalHealth\webPage\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     -->
+    <link href="{{ url_for('statics',path='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+
+  <body>
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <br><br>
+        <h1 class="header center orange-text">Mental Health Prediction</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">Predict the probability whether a person requires Mental Treatment
+              <br>
+            </h5>
+          </div>
+        <div class="row center">
+          <h6 class="header col s12 light">Instructions to fill form<br>1. Enter age in years<br>2. For Gender: Enter 0 for male, 1 for female and 2 for transgender<br>3. For Family History: Enter 0 for No and 1 for Yes</h6>
+        </div>
+
+        <div class="row">
+          <form action="/predict" method="post" class="col s12">
+            <div class="row">
+              <div class="input-field col s4">
+                <label for="Age"><b>Age</b></label>
+                <br>
+                <input placeholder="Age" name="Age" id="Age" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Gender"><b>Gender </b></label>
+                <br>
+                <input id="Gender" name="Gender" placeholder="Gender"  type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Family_history"><b>Family History</b></label>
+                <br>
+                <input id="Family_history" name="Family_history" placeholder="Family History" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Benefits"><b>Benefits</b></label>
+                <br>
+                <input placeholder="Benefits" name="Benefits" id="Benefits" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Care_options"><b>Care_options</b></label>
+                <br>
+                <input placeholder="Care_options" name="Care_options" id="Care_options" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Anonymity"><b>Anonymity</b></label>
+                <br>
+                <input placeholder="Anonymity" name="Anonymity" id="Anonymity" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Leave"><b>Leave</b></label>
+                <br>
+                <input placeholder="Leave" name="Leave" id="Leave" type="number" class="validate">
+              </div>
+              <div class="input-field col s4">
+                <label for="Work_interfere"><b>Work_interfere</b></label>
+                <br>
+                <input placeholder="Work_interfere" name="Work_interfere" id="Work_interfere" type="number" class="validate">
+              </div>
+            </div>
+            <div class="row center">
+              <button type="submit" class="btn-large waves-effect waves-light orange">Predict Probability</button>
+            </div>
+          </form>
+        </div>
+        <br>
+        <div class="row center">
+          <h6 id="returnValue"  class="waves-effect waves-light orange">{{pred}}<br></h6>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>
+  <script>
+    document.getElementById("returnValue").innerHTML = pred?pred:"";
+  </script> 
+</body>
+</html>
